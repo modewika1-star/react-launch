@@ -1,6 +1,8 @@
 <div align="center">
 
-# ⚛️ React Starter Template
+# ReactLaunch | React Starter Kit
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Open_Project-2563EB?style=for-the-badge&logo=vercel&logoColor=white)](https://react-starter-kit-2-mjs.vercel.app/)
 
 ### A lightweight starting point for building React applications with Vite.
 
