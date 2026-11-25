@@ -1,16 +1,87 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ⚛️ React Starter Template
 
-Currently, two official plugins are available:
+### A lightweight starting point for building React applications with Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A clean React 19 starter with fast development tooling, Tailwind CSS v4, animation utilities, and ESLint checks.
 
-## React Compiler
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=20232A)](https://react.dev/) [![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+## ✨ Included tooling
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 19** for component-based UI development.
+- **Vite 8** for a fast local development server and optimized builds.
+- **Tailwind CSS 4** through the official Vite plugin.
+- **Animate.css** for ready-made CSS animation classes.
+- **ESLint** with React Hooks and React Refresh rules.
+- **React Fast Refresh** for a smooth development experience.
+
+## ⚙️ Getting started
+
+### Requirements
+
+- Node.js compatible with Vite 8 (Node.js **22.12+** or **24**).
+- npm.
+
+### Install dependencies
+
+~~~bash
+git clone https://github.com/modewika1-star/t14.react1.git
+cd t14.react1
+npm install
+~~~
+
+### Start development
+
+~~~bash
+npm run dev
+~~~
+
+### Build for production
+
+~~~bash
+npm run build
+npm run preview
+~~~
+
+### Lint
+
+~~~bash
+npm run lint
+~~~
+
+## 🗂️ Project structure
+
+~~~text
+src/
+├── assets/       # Static assets
+├── App.jsx       # Root application component
+├── App.css       # App-level styles
+├── index.css     # Global styles
+└── main.jsx      # React entry point
+
+public/           # Public static assets
+index.html        # Vite HTML entry
+vite.config.js    # Vite configuration
+eslint.config.js  # ESLint configuration
+~~~
+
+## 🧩 React plugins
+
+The project uses the Vite React plugin. You can choose between:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react), powered by Oxc.
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), powered by SWC.
+
+Only install and configure the plugin you intend to use.
+
+## 📌 Notes
+
+This repository is a starter scaffold rather than a finished end-user application. Add your own pages, components, routes, data layer, and tests as the project grows.
+
+---
+
+**Repository:** [modewika1-star/t14.react1](https://github.com/modewika1-star/t14.react1)
