@@ -48,9 +48,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-bottom">
-          <p>Copyright Wonde. All Rights Reserved © {new Date().getFullYear()}</p>
-          <p>Designed by Developer Career Team.</p>
+        <div className="footer-bottom site-credit-footer" dir="ltr">
+          <span className="site-credit-left">Created by <a href="https://7ijazi.vercel.app/" target="_blank" rel="noopener noreferrer">7ijazi</a></span>
+          <div className="site-credit-center" dir="auto">
+            <p>Copyright Wonde. All Rights Reserved © {new Date().getFullYear()}</p>
+            <p>Designed by Developer Career Team.</p>
+          </div>
+          <span className="site-credit-right">Made in 2026</span>
         </div>
       </div>
     </footer>
