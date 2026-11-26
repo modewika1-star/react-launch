@@ -1,31 +1,51 @@
+import { useState } from 'react'
+
+const navigation = [
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Our work', href: '#work' },
+  { label: 'Our team', href: '#team' },
+]
+
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const closeMenu = () => setIsMenuOpen(false)
+
   return (
-    <header className="sticky top-0 z-50 text-white" style={{ backgroundColor: '#9A0EB033' }}>
-      <nav className="flex items-center justify-between px-4 py-4 mx-auto max-w-7xl">
-        <div
-          className="text-2xl font-bold"
-          style={{
-            background: 'linear-gradient(90deg, #9A0EB0 0%, #7B4FD7 100%)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            color: 'transparent',
-          }}
+    <header className="site-header">
+      <nav className="nav container" aria-label="Main navigation">
+        <a className="brand" href="#top" onClick={closeMenu} aria-label="Wonde home">
+          wonde<span className="brand-mark" aria-hidden="true">.</span>
+        </a>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setIsMenuOpen((open) => !open)}
         >
-          wonde
-        </div>
-        <div className="flex gap-8">
-          <a href="#contact" className="transition hover:opacity-80" style={{ color: '#000000' }}>
-            Get in touch
-          </a>
-          <a href="#work" className="transition hover:opacity-80" style={{ color: '#000000' }}>
-            Our work
-          </a>
-          <a href="#services" className="transition hover:opacity-80" style={{ color: '#000000' }}>
-            Services
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <div
+          id="primary-navigation"
+          className={isMenuOpen ? 'nav-links is-open' : 'nav-links'}
+        >
+          {navigation.map((item) => (
+            <a key={item.href} href={item.href} onClick={closeMenu}>
+              {item.label}
+            </a>
+          ))}
+          <a className="nav-cta" href="#contact" onClick={closeMenu}>
+            Get in touch <span aria-hidden="true">↗</span>
           </a>
         </div>
       </nav>
     </header>
   )
 }
-

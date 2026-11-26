@@ -4,74 +4,53 @@ import uxResearchImg from '../assets/ux researches.svg'
 import preDesignImg from '../assets/pre design.png'
 import websiteUiImg from '../assets/Website ui.svg'
 
+const services = [
+  {
+    imageSrc: mobileUiImg,
+    imageAlt: 'Mobile interface illustration',
+    title: 'Mobile UI',
+    description: 'Intuitive, polished interfaces designed for smaller screens.',
+  },
+  {
+    imageSrc: uxResearchImg,
+    imageAlt: 'UX research illustration',
+    title: 'UX Research',
+    description: 'Research that turns user needs into clear design decisions.',
+  },
+  {
+    imageSrc: preDesignImg,
+    imageAlt: 'Wireframe and pre-design illustration',
+    title: 'Pre-design',
+    description: 'Thoughtful wireframes and prototypes before development.',
+  },
+  {
+    imageSrc: websiteUiImg,
+    imageAlt: 'Website interface illustration',
+    title: 'Website UI',
+    description: 'Modern website experiences for every screen size.',
+  },
+]
+
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="px-4 mx-auto max-w-7xl">
-        <h2 className="mb-4 text-4xl font-bold text-purple-main">Our Services</h2>
+    <section className="section services-section" id="services" aria-labelledby="services-title">
+      <div className="container">
+        <div className="section-heading section-heading-centered">
+          <p className="section-kicker">How we can help</p>
+          <h2 className="section-title" id="services-title">Our services</h2>
+          <p className="section-intro">
+            We bring clarity and craft to every step of the design process.
+          </p>
+        </div>
 
-        <p
-          className="mb-12 text-gray-600"
-          style={{
-            fontFamily: 'Roboto',
-            fontWeight: 500,
-            fontSize: 40,
-            lineHeight: '50px',
-          }}
-        >
-          We Provide Best Quality Service
-        </p>
-      </div>
-
-      <div
-        className="w-full py-8"
-        style={{ background: 'linear-gradient(180deg, #9A0EB0 0%, #7B4FD7 100%)' }}
-      >
-        <div className="px-4 mx-auto max-w-7xl">
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <ServiceCard
-                imageSrc={mobileUiImg}
-                imageAlt="mobile ui"
-                title="mobile ui"
-                description="fast,powerful & design what you want"
-                buttonText="read more"
-              />
-            </div>
-
-            <div className="mt-16">
-              <ServiceCard
-                imageSrc={uxResearchImg}
-                imageAlt="UX researches"
-                title="ux researches"
-                description="fast,powerful & design what you want"
-                buttonText="read more"
-              />
-            </div>
-
-            <div>
-              <ServiceCard
-                imageSrc={preDesignImg}
-                imageAlt="pre design"
-                title="pre design"
-                description="fast,powerful & design what you want"
-                buttonText="read more"
-              />
-            </div>
-
-            <div className="mt-16">
-              <ServiceCard
-                imageSrc={websiteUiImg}
-                imageAlt="website ui"
-                title="website ui"
-                description="fast,powerful & design what you want"
-                buttonText="read more"
-              />
-            </div>
+        <div className="services-band">
+          <div className="service-grid">
+            {services.map((service) => (
+              <ServiceCard key={service.title} {...service} />
+            ))}
           </div>
         </div>
       </div>
     </section>
   )
 }
-
