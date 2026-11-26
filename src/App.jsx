@@ -11,16 +11,20 @@ import aboutGif from './assets/ad8bfcdab0f7490450606b60643b9885fbb94a53.gif'
 
 export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formStatus, setFormStatus] = useState('')
 
   const handleFormChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormStatus('')
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    setFormData({ name: '', email: '', message: '' })
+    const subject = encodeURIComponent(`Website enquiry from ${formData.name}`)
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)
+    setFormStatus('Your email app is opening with your message ready to send.')
+    window.location.href = `mailto:Mostafa@gamil.com?subject=${subject}&body=${body}`
   }
 
   return (
@@ -602,105 +606,83 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-[#f5f3f3]">
+      <section id="contact" className="contact-section py-16 md:py-24 bg-[#f5f3f3]">
         <div className="max-w-6xl px-4 mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#8A2BE2] mb-10 md:mb-16">Drop your message</h2>
 
           <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:gap-0">
-            {/* Contact Card */}
-            <div className="w-full lg:w-[320px] rounded-[30px] bg-linear-to-b from-[#A020C0] to-[#7B4CE2] text-white shadow-2xl px-6 sm:px-10 py-10 sm:py-14">
+            <aside className="contact-card w-full lg:w-[320px] rounded-[30px] bg-linear-to-b from-[#A020C0] to-[#7B4CE2] text-white shadow-2xl px-6 sm:px-10 py-10 sm:py-14">
               <h3 className="mb-10 text-2xl font-light sm:text-3xl md:text-4xl">Contact Us</h3>
-
               <div className="space-y-8 sm:space-y-12">
-                <p>📍 Dakahlia - Mansoura</p>
-                <p>📧 Mostafa@gamil.com</p>
-                <p>📞 +20 01212282246</p>
-                <p>📞 +20 01556965665</p>
+                <p><span aria-hidden="true">📍</span> Dakahlia - Mansoura</p>
+                <p><span aria-hidden="true">📧</span> <a href="mailto:Mostafa@gamil.com">Mostafa@gamil.com</a></p>
+                <p><span aria-hidden="true">📞</span> <a href="tel:+201212282246">+20 01212282246</a></p>
+                <p><span aria-hidden="true">📞</span> <a href="tel:+201556965665">+20 01556965665</a></p>
               </div>
-            </div>
+            </aside>
 
-            {/* Form */}
-            <div className="w-full bg-white rounded-[35px] shadow-lg py-10 sm:py-16 px-6 sm:px-10 lg:px-20">
+            <div className="contact-form-panel w-full bg-white rounded-[35px] shadow-lg py-10 sm:py-16 px-6 sm:px-10 lg:px-20">
               <div className="mx-auto max-w-125 lg:ml-auto">
                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#8A2BE2] mb-3">Get in Touch</h3>
+                <p className="mb-8 text-gray-500">Feel free to drop us a line below.</p>
 
-                <p className="mb-8 text-gray-400">Feel free to drop us a line below</p>
-
-                <p onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <label className="sr-only" htmlFor="contact-name">Your name</label>
                   <input
+                    id="contact-name"
                     name="name"
+                    type="text"
+                    autoComplete="name"
                     placeholder="Your Name"
-                    className="w-full h-12 sm:h-14 px-4 bg-[#f3f3f3] rounded-lg"
+                    required
+                    className="contact-field w-full h-12 sm:h-14 px-4 bg-[#f3f3f3] rounded-lg"
                     onChange={handleFormChange}
                     value={formData.name}
                   />
 
+                  <label className="sr-only" htmlFor="contact-email">Your email</label>
                   <input
+                    id="contact-email"
                     name="email"
+                    type="email"
+                    autoComplete="email"
                     placeholder="Your Email"
-                    className="w-full h-12 sm:h-14 px-4 bg-[#f3f3f3] rounded-lg"
+                    required
+                    className="contact-field w-full h-12 sm:h-14 px-4 bg-[#f3f3f3] rounded-lg"
                     onChange={handleFormChange}
                     value={formData.email}
                   />
 
+                  <label className="sr-only" htmlFor="contact-message">Your message</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     rows="5"
                     placeholder="Type your message..."
-                    className="w-full px-4 py-3 bg-[#f3f3f3] rounded-lg"
+                    required
+                    className="contact-field w-full px-4 py-3 bg-[#f3f3f3] rounded-lg"
                     onChange={handleFormChange}
                     value={formData.message}
                   />
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-3 text-white font-bold rounded-xl bg-linear-to-r from-[#A020C0] to-[#7B4CE2]"
+                    className="contact-submit w-full sm:w-auto px-10 py-3 text-white font-bold rounded-xl bg-linear-to-r from-[#A020C0] to-[#7B4CE2]"
                   >
-                    SEND
+                    SEND MESSAGE
                   </button>
-          </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-
-            <input
-              name="name"
-              placeholder="Your Name"
-              className="w-full h-12 sm:h-14 px-4 bg-[#f3f3f3] rounded-lg"
-              onChange={handleFormChange}
-              value={formData.name}
-            />
-
-            <input
-              name="email"
-              placeholder="Your Email"
-              className="w-full h-12 sm:h-14 px-4 bg-[#f3f3f3] rounded-lg"
-              onChange={handleFormChange}
-              value={formData.email}
-            />
-
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Type your message..."
-              className="w-full px-4 py-3 bg-[#f3f3f3] rounded-lg"
-              onChange={handleFormChange}
-              value={formData.message}
-            />
-
-            <button
-              type="submit"
-className="w-full sm:w-auto px-10 py-3 text-white font-bold rounded-xl bg-linear-to-r from-[#A020C0] to-[#7B4CE2]"
-            >
-              SEND
-            </button>
-
-          </form>
+                  {formStatus && (
+                    <p className="text-sm text-[#6b21a8]" role="status" aria-live="polite">
+                      {formStatus}
+                    </p>
+                  )}
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Footer */}
 <footer className="py-12 text-white bg-linear-to-r from-purple-main to-purple-light">
